@@ -114,88 +114,32 @@
 
     </style>
 
-    <!-- Meta Pixel Code -->
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '4214224842193660'); // Remplazar por pixel
-        fbq('track', 'PageView');
-    </script>
-    <noscript>
-        <img height="1" width="1" src="https://www.facebook.com/tr?id=4214224842193660&ev=PageView&noscript=1"/> //remplazar por pixel id
-    </noscript>
-
+<!-- Meta Pixel Code -->
 <script>
-    // Variables de configuración
-    const accessToken = "EAAOdyg3KzowBPLuFZAMZA7PKdSXc1dr8fAJ8x3dJtBSbLHY72Erdo6ueu3eKkIl56RZCvbqK19sRnsxYhVcjfGK42NcqvZAj9jEGxL38nJk5WpPAK6P687TqOBGAK84UIaWbgSPKXQlKJoP1C7p0FZAgouWQGZCWw8FIg0Tbbfonpdwk8ZBySqadbhCaA0Sm6CFZCQZDZD"; // Reemplázalo con tu token de acceso de la API de conversiones
-    const pixelId = "4214224842193660"; // Reemplázalo con tu Pixel ID de Meta
-    const conversionValue = 5;  // Ajusta el valor de la conversión
-    const currency = "ARS";  // Ajusta la moneda
-
-document.addEventListener("DOMContentLoaded", function () {
-    const whatsappButton = document.querySelector('.cta-button');
-
-    if (whatsappButton) {
-        whatsappButton.addEventListener('click', function () {
-
-            const eventos = ["Comprar", "Cliente potencial"];
-            const eventoSeleccionado = eventos[Math.floor(Math.random() * eventos.length)]; // Alterna entre los dos eventos
-
-            console.log(`Evento seleccionado: ${eventoSeleccionado}`);
-
-
-            fbq('track', eventoSeleccionado, { 
-                content_name: 'Clic en botón WhatsApp',
-                content_category: 'Interacción de usuario'
-            });
-
-            fetch(`https://graph.facebook.com/v18.0/${pixelId}/events`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    data: [{
-                        event_name: eventoSeleccionado, 
-                        event_time: Math.floor(Date.now() / 1000),
-                        action_source: "website",
-                        event_source_url: window.location.href,
-                        event_id: Math.random().toString(36).substring(2, 15),
-                        user_data: {
-                            client_user_agent: navigator.userAgent
-                        },
-                        custom_data: {
-                            value: conversionValue,
-                            currency: currency
-                        }
-                    }],
-                    access_token: accessToken
-                })
-            })
-            .then(response => response.json())
-            .then(data => console.log("Respuesta API Conversiones:", data))
-            .catch(error => console.error("Error en API Conversiones:", error));
-        });
-    } else {
-        console.warn("No se encontró el botón de WhatsApp.");
-    }
-});
-
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '854534657025209'); 
+  fbq('track', 'PageView');
 </script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id=854534657025209&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel Code -->
 
 </head>
 <body>
     <section class="hero">
         <h1>¡Gana con nosotros, estamos las 24h del día junto a vos!</h1>
         <p>Para crear tu cuenta, envíanos un WhatsApp haciendo click en el botón de abajo</p>
-        <a href="https://api.whatsapp.com/send?phone=5491168516624&text=¡Buen4s!%20Me%20gust4rí4%20cre4r%20un%20usu4rio.%20Mi%20nombre%20es:" 
-           class="cta-button" target="_blank">
+        <a href="https://api.whatsapp.com/send?phone=5491158496140&text=¡Buen4s!%20Me%20gust4rí4%20cre4r%20un%20usu4rio.%20Mi%20nombre%20es:" 
+           class="cta-button" target="_blank" onclick="fbq('trackCustom', 'WhatsAppClick')">
             <i class='fab fa-whatsapp'></i> ¡Crea tu usuario!
         </a>
     </section>
