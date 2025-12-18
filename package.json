@@ -1,0 +1,13 @@
+{
+  "name": "Ganamos24hs",
+  "version": "1.0.0",
+  "description": "Sitio web Ganamos24hs con panel de administración",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "ioredis": "^5.3.2"
+  },
+  "devDependencies": {}
+}
+
